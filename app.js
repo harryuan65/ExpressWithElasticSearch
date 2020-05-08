@@ -1,14 +1,12 @@
 const express = require("express");
 let app = express();
-var elastic_search = require('elasticsearch');
-var client = new elastic_search.Client({
-    host: 'http://localhost:9200'
-});
+const { Client } = require('@elastic/elasticsearch');
+var client = new Client({node: 'http://localhost:9200'});
 
 const PORT = 3002;
 const path = require("path");
 const bodyParser = require("body-parser");
-app.set("view engine","pug");
+app.set("view engine","ejs");
 app.set("views",path.resolve("./src/views"));
 
 app.use(bodyParser.json());
@@ -30,7 +28,8 @@ router.use((req,res,next) => {
 router.get('/',(req,res)=>{
     res.render('index');
 })
-router.post('/_search/:str',(req,res)=>{
+
+router.post('/_search/',(req,res)=>{
     client.search({
         index:'workrecord',
         body: {
@@ -38,11 +37,11 @@ router.post('/_search/:str',(req,res)=>{
                 match:{ duration:req.params.str }
             }
        }
-    },function(err,result){
+    },(err,result)=>{
         console.log(result)
         if(err){
             return res.status(400).send({
-                message:"Search Errored"
+                message:`Search Errored ${err}`
             })
         }
         else{
@@ -90,7 +89,7 @@ router.get('/workrecord/:id',(req,res)=>{
 })
 router.post('/workrecord',(req,res)=>{
 
-    if(!req.body.id){
+    if(!req.params.id){
         return res.status(400).send({
             message: "Id is required"
         })

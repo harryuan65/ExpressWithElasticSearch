@@ -9,11 +9,11 @@
   "author": "harry",
   "license": "MIT",
   "dependencies": {
-    "@elastic/elasticsearch": "^7.3.0",
+    "@elastic/elasticsearch": "^7.6.1",
+    "ejs": "^3.1.2",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0",
-    "nodemon": "^1.19.1",
-    "pug": "^2.0.4"
+    "nodemon": "^1.19.1"
   },
   "repository": "none",
   "private": false
