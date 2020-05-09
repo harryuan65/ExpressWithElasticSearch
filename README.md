@@ -11,3 +11,5 @@ ver: 7.6.2(brew)
 
 ## Usage
 
+`yarn`
+`npm run server`
