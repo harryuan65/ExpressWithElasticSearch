@@ -11,7 +11,8 @@ a {
 
 html, body {
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; }
 
 body {
   display: flex;
@@ -21,8 +22,20 @@ body {
   background-color: #DEE9F9;
   color: #171721; }
 
+.wrap-entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%; }
+
 .container-links {
-  list-style-type: none; }
+  list-style-type: none;
+  font-size: 20px; }
+  .container-links li {
+    margin-top: 15px; }
+    .container-links li:hover {
+      color: #2b2f35; }
 
 .container {
   position: relative;
@@ -33,8 +46,74 @@ body {
   width: 70%;
   height: 100%; }
 
+.block-warning {
+  width: 80%;
+  background-color: #171721;
+  color: #fff;
+  padding: 5px; }
+
+.current-payload {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 70%;
+  height: inherit; }
+
 .input-pair {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: auto; }
+
+#add-body-field {
+  background-color: #2a4c80;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  font-size: 25px;
+  padding: 3px;
+  color: #DEE9F9; }
+  #add-body-field:hover {
+    cursor: pointer;
+    color: #2a4c80; }
+
+.result-payload {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 80%;
+  height: auto;
+  background-color: rgba(54, 54, 54, 0.8); }
+  .result-payload .status-code {
+    margin-bottom: 20px;
+    font-size: 30px; }
+    .result-payload .status-code.success {
+      color: #9de91b; }
+    .result-payload .status-code.failure {
+      color: #f50606; }
+  .result-payload .payload {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    color: #fff;
+    position: relative;
+    margin: 0 10px 0 10px;
+    border: 2px solid #464646;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word; }

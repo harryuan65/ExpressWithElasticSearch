@@ -1,4 +1,5 @@
 $font-color:rgb(23,23,33);
+$back-color: #DEE9F9;
 a{
   text-decoration: none;
   &:link{
@@ -26,22 +27,94 @@ a{
 }
 html, body{
   @include size(100%,100%);
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 body {
   @include flex(column, center, center);
-  background-color: #DEE9F9;
+  background-color: $back-color;
   color: $font-color;
 }
+
+//entry.ejs
+.wrap-entry{
+  @include flex(row, space-evenly, center);
+  width: 100%;
+}
+
 .container-links{
   list-style-type: none;
+  font-size: 20px;
+  & li{
+    margin-top: 15px;
+    &:hover{
+      color: rgb(43,47,53);
+    }
+  }
 }
 .container{
   position: relative;
   @include flex(column, flex-start, center);
   @include size(70%,100%);
 }
-
+.block-warning{
+  width: 80%;
+  background-color: $font-color;
+  color: #fff;
+  padding: 5px;
+}
+.current-payload{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+form{
+  @include flex(column ,flex-start, flex-start);
+  @include size(70%, inherit);
+}
 // add_document.ejs
 .input-pair{
-  @include flex(row ,center, center);
+  @include flex(row, space-between, center);
+  @include size(100%, auto);
+}
+#add-body-field{
+    background-color: rgb(42, 76, 128);
+    @include flex(row, center, center);
+    @include size(30px, 30px);
+    border-radius: 9px;
+    font-size: 25px;
+    padding: 3px;
+    color: $back-color;
+    &:hover{
+      cursor: pointer;
+      color: rgb(42, 76, 128);
+    }
+}
+
+//result
+.result-payload{
+  @include flex(column, flex-start, center);
+  width: 80%;
+  height: auto;
+  background-color: rgba(54 ,54, 54, .8);
+  & .status-code{
+    margin-bottom: 20px;
+    font-size: 30px;
+    &.success{
+      color: rgb(157, 233, 27);
+    }
+    &.failure{
+      color: rgb(245, 6, 6);
+    }
+  }
+  & .payload{
+    @include flex(row, center, center);
+    width: 80%;
+    color: #fff;
+    position: relative;
+    margin: 0 10px 0 10px;
+    border: 2px solid rgb(70, 70, 70);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 }

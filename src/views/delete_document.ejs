@@ -1,0 +1,39 @@
+<%- include('_partial_header.ejs',{title: title}) %>
+<div class="block-warning">
+  目前delete支援type，delete未來不支援type，未來只准以id刪除document。
+  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/7.x/removal-of-types.html"></a>
+</div>
+<hr>
+
+<form action="/delete_document" method="post" id="form-delete-document">
+    <div class="input-pair">
+      <label for="dev">Show Input Only?</label>
+      <input type="checkbox" name="delete_document[dev]" value="true">
+    </div>
+
+    <hr />
+
+    <div class="input-pair">
+      <label for="id">ID(required)</label>
+      <input type="text" name="delete_document[id]" placeholder="ID (required)" required>
+    </div>
+
+    <div class="input-pair">
+      <label for="index">Index</label>
+      <input type="text" name="delete_document[index]" placeholder="Index Name" value="articles">
+    </div>
+
+    <div class="input-pair">
+      <label for="type">Type</label>
+      <input type="text" name="delete_document[type]" placeholder="Type" value="article">
+    </div>
+
+    <span id="count-anchor" style="display: none;">0</span>
+    <div class="input-pair">
+        <label for="type">Add Field</label>
+        <span id="add-body-field" onclick="addBodyField()">+</span>
+    </div>
+    <button type="submit" id="form-submit" form="form-delete-document">ADD</button>
+</form>
+
+<%- include('_partial_footer.ejs') %>

@@ -1,11 +1,24 @@
 <%- include ('_partial_header.ejs', {title: title}) %>
-
-<ul class="container-links">
-  <li><a href="http://localhost:3002/new_index">New Index</a></li>
-  <li><a href="http://localhost:3002/add_document">Add Document</a></li>
-  <li><a href="http://localhost:3002/query">Query</a></li>
-  <li><a href="http://localhost:3002/update">Update</a></li>
-  <li><a href="http://localhost:3002/delete_index">Delete Index</a></li>
-</ul>
+<div class="wrap-entry">
+  <ul class="container-links">
+    <hr>
+    <li><a href="http://localhost:3002/new_index">New Index</a></li>
+    <li><a href="http://localhost:3002/delete_index">Delete Index</a></li>
+    <hr>
+    <li><a href="http://localhost:3002/add_document">Add Document</a></li>
+    <li><a href="http://localhost:3002/delete_document">Delete Document</a></li>
+    <hr>
+    <li><a href="http://localhost:3002/single_field_query">Single Field Query</a></li>
+    <li><a href="http://localhost:3002/multiple_fields_query">Multiple Fields Query</a></li>
+    <li><a href="http://localhost:3002/update_by_query">Update By Query</a></li>
+    <hr>
+  </ul>
+  <div class="current-data">
+    <h3><%= (hasIndex? 'Articles' : 'No index')%></h3>
+    <pre class="current-payload">
+      <%= data%>
+    </pre>
+  </div>
+</div>
 
 <%- include ('_partial_footer.ejs') %>

@@ -1,0 +1,6 @@
+<%- include ('_partial_header.ejs', {title: title}) %>
+<div class="result-payload">
+    <h3 class="status-code <%= (statusCode.toString()[0]=='2' ? ' success' : ' failure')%>"><%= statusCode%></h3>
+    <pre class="payload"><%= result %></pre>
+</div>
+<%- include ('_partial_footer.ejs') %>

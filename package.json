@@ -10,7 +10,7 @@
     "sass-generate": "node-sass ./public/stylesheets/scss -o ./public/stylesheets/translated-css/",
     "prestart": "yarn sass-generate",
     "start": "node app.js",
-    "dev": "nodemon --watch ./public/stylesheets/scss/style.scss --watch app.js --watch src --exec npm start"
+    "server": "nodemon --watch ./public/stylesheets/scss/style.scss --watch app.js --watch src --exec npm start"
   },
   "author": "harry",
   "license": "MIT",
@@ -22,5 +22,13 @@
     "nodemon": "^1.19.1"
   },
   "repository": "none",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1"
+  }
 }

@@ -1,0 +1,88 @@
+<%- include('_partial_header.ejs',{title: title}) %>
+<script>
+    var values = ['Taiwan NO.1', '可撥', '是在哈囉', '最好不要旋轉我','阿薩不魯' ,'臭奶呆', '辣個男人', '芒果乾', '你當我塑膠喔'];
+    function addBodyField(){
+        var hiddenCount = document.getElementById('count-anchor');
+        var count = parseInt(hiddenCount.innerText)
+        var newPair = document.getElementById(`field-${count}`).cloneNode(true);
+        newPair.setAttribute('id', `field-${count+1}`)
+        newPair.querySelector('span.count').innerText = count+1;
+
+        var k = newPair.querySelector(`#k-${count}`)
+        k.setAttribute('id',`k-${count+1}`)
+        k.setAttribute('name',`query_document[fields]`)
+        k.setAttribute('value',`field_${count+1}`)
+
+        var form = document.getElementById('form-query-document')
+        hiddenCount.innerText = `${count+1}`;
+        form.insertBefore(newPair, hiddenCount);
+    }
+    function remove(e){
+      e.parentNode.parentNode.remove();
+    }
+</script>
+<div class="block-warning">
+  [match] query doesn't support multiple fields -> [multi-match]
+  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html">Reference</a>
+</div>
+<form action="/multiple_fields_query" method="post" id="form-query-document">
+    <div class="input-pair">
+      <label for="dev">Show Input Only?</label>
+      <input type="checkbox" name="query_document[dev]" value="true">
+    </div>
+
+    <hr />
+
+    <div class="input-pair">
+      <label for="index">Index</label>
+      <input type="text" name="query_document[index]" placeholder="Index Name" value="articles">
+    </div>
+
+    <div class="input-pair">
+      <label for="id">ID(optional)</label>
+      <input type="text" name="query_document[id]"  placeholder="ID (optional)">
+    </div>
+
+    <div class="input-pair">
+      <label for="type">Type(未來不支援)</label>
+      <input type="text" name="query_document[type]" placeholder="Type (optional)" value="article">
+    </div>
+
+    <div class="input-pair">
+      <label for="type">QueryString</label>
+      <input type="text" name="query_document[query]" placeholder="QueryString" value="亂幹">
+    </div>
+
+    <div class="input-pair" id="field-0">
+        <label for="type">Field[<span class="count">0</span>]</label>
+        <div class="wrap-key-value">
+          <input type="text" id="k-0" name="query_document[fields]" placeholder="key" value="user_id">
+          <span class="delete" style="color:brown; cursor: pointer" onclick="remove(this)">X</span>
+        </div>
+    </div>
+
+    <div class="input-pair" id="field-1">
+      <label for="type">Field[<span class="count">1</span>]</label>
+      <div class="wrap-key-value">
+        <input type="text" id="k-1" name="query_document[fields]" placeholder="key" value="title">
+          <span class="delete" style="color:brown; cursor: pointer" onclick="remove(this)">X</span>
+      </div>
+    </div>
+
+    <div class="input-pair" id="field-2">
+      <label for="type">Field[<span class="count">2</span>]</label>
+      <div class="wrap-key-value">
+        <input type="text" id="k-2" name="query_document[fields]" placeholder="key" value="content">
+        <span class="delete" style="color:brown; cursor: pointer" onclick="remove(this)">X</span>
+      </div>
+    </div>
+
+    <span id="count-anchor" style="display: none;">2</span>
+    <div class="input-pair">
+        <label for="type">Add Field</label>
+        <span id="add-body-field" onclick="addBodyField()">+</span>
+    </div>
+    <button type="submit" id="form-submit" form="form-query-document">Search</button>
+</form>
+
+<%- include('_partial_footer.ejs') %>

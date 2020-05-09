@@ -1,0 +1,43 @@
+<%- include('_partial_header.ejs',{title: title}) %>
+
+<div class="block-warning">
+  [match] query doesn't support multiple fields -> [multi-match]
+  <a href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html">Reference</a>
+</div>
+<form action="/single_field_query" method="post" id="form-query-document">
+    <div class="input-pair">
+      <label for="dev">Show Input Only?</label>
+      <input type="checkbox" name="query_document[dev]" value="true">
+    </div>
+
+    <hr />
+
+    <div class="input-pair">
+      <label for="index">Index</label>
+      <input type="text" name="query_document[index]" placeholder="Index Name" value="articles">
+    </div>
+
+    <div class="input-pair">
+      <label for="id">ID(optional)</label>
+      <input type="text" name="query_document[id]"  placeholder="ID (optional)">
+    </div>
+
+    <div class="input-pair">
+      <label for="type">Type(未來不支援)</label>
+      <input type="text" name="query_document[type]" placeholder="Type (optional)" value="article">
+    </div>
+
+
+    <div class="input-pair" id="body-0">
+        <label for="type">Body</label>
+        <div class="wrap-key-value">
+          <input type="text" id="k-0" name="query_document[body][0]" placeholder="key" value="user_id">
+          <input type="text" id="v-0" name="query_document[body][0]" placeholder="value" value="21659">
+        </div>
+    </div>
+
+
+    <button type="submit" id="form-submit" form="form-query-document">Search</button>
+</form>
+
+<%- include('_partial_footer.ejs') %>
