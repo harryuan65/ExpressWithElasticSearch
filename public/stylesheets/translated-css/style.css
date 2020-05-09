@@ -1,0 +1,40 @@
+a {
+  text-decoration: none; }
+  a:link {
+    color: #171721; }
+  a:visited {
+    color: #2b2f35; }
+  a:hover {
+    color: #2b2f35; }
+  a:active {
+    color: #383537; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #DEE9F9;
+  color: #171721; }
+
+.container-links {
+  list-style-type: none; }
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 70%;
+  height: 100%; }
+
+.input-pair {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }

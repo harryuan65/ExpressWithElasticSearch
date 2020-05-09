@@ -1,0 +1,47 @@
+$font-color:rgb(23,23,33);
+a{
+  text-decoration: none;
+  &:link{
+    color: $font-color;
+  }
+  &:visited {
+    color: rgb(43,47,53);
+  }
+  &:hover{
+    color: rgb(43,47,53);
+  }
+  &:active{
+    color: rgb(56,53,55);
+  }
+}
+@mixin flex($fd,$jc,$ai){
+  display: flex;
+  flex-direction: $fd;
+  justify-content: $jc;
+  align-items: $ai;
+}
+@mixin size($w,$h){
+  width: $w;
+  height:$h;
+}
+html, body{
+  @include size(100%,100%);
+}
+body {
+  @include flex(column, center, center);
+  background-color: #DEE9F9;
+  color: $font-color;
+}
+.container-links{
+  list-style-type: none;
+}
+.container{
+  position: relative;
+  @include flex(column, flex-start, center);
+  @include size(70%,100%);
+}
+
+// add_document.ejs
+.input-pair{
+  @include flex(row ,center, center);
+}

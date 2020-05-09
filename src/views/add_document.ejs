@@ -1,0 +1,66 @@
+<%- include('_partial_header.ejs',{title: title}) %>
+<script>
+    function addBodyField(){
+        var hiddenCount = document.getElementById('count');
+        var count = parseInt(hiddenCount.innerText)
+        var new_pair_container = document.createElement('div')
+        new_pair_container.classList.add('input-pair');
+
+        var input_num = document.createElement('span');
+        input_num.classList.add('count');
+        input_num.innerText = `${count+1}`;
+
+        var input_key = document.createElement('input');
+        input_key.setAttribute('type','text');
+        input_key.setAttribute('placeholder','key');
+        input_key.setAttribute('name',`new_document[body][${count}]`);
+
+        var input_value = document.createElement('input');
+        input_value.setAttribute('type','text');
+        input_value.setAttribute('placeholder','value');
+        input_value.setAttribute('name',`new_document[body][${count}]`);
+
+        new_pair_container.append(input_num)
+        new_pair_container.append(input_key)
+        new_pair_container.append(input_value)
+
+        var wrapBody = document.getElementById('wrap-input-body');
+        wrapBody.append(new_pair_container);
+        hiddenCount.innerText = `${count+1}`;
+    }
+</script>
+<form action="" method="post" id="form-add-document">
+    <div class="input-pair">
+      <label for="dev">Show Input Only?</label>
+      <input type="checkbox" name="new_document[dev]" value="true">
+    </div>
+
+    <div class="input-pair">
+      <label for="index">Index</label>
+      <input type="text" name="new_document[index]" placeholder="Index Name" value="articles">
+    </div>
+
+    <div class="input-pair">
+      <label for="id">ID(optional)</label>
+      <input type="text" name="new_document[id]"  placeholder="ID (optional)">
+    </div>
+
+    <div class="input-pair">
+      <label for="type">Type</label>
+      <input type="text" name="new_document[type]" placeholder="Type" value="article">
+    </div>
+
+
+    <span id="count" style="display: none;">1</span>
+    <div id="wrap-input-body">
+        <div class="input-pair">
+          <span class="count">1</span>
+          <input type="text" name="new_document[body][0]" placeholder="key" value="user">
+          <input type="text" name="new_document[body][0]" placeholder="value" value="harry">
+      </div>
+   </div>
+   <button type="submit" id="form-submit" form="form-add-document">ADD</button>
+</form>
+<button id="add-body-field" onclick="addBodyField()">+</button>
+
+<%- include('_partial_footer.ejs') %>

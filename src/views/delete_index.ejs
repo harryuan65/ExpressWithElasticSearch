@@ -1,0 +1,9 @@
+<%- include ('_partial_header.ejs', {title: title}) %>
+
+<form action="http://localhost:3002/delete_index" method="POST">
+  <legend>Create Index</legend>
+    <input type="text" name="delete_index" value="" placeholder="Delete Index" id="delete-index" autofocus="autofocus" class="form-control"/>
+    <button type="submit" class="btn">Go</button>
+</form>
+
+<%- include ('_partial_footer.ejs') %>

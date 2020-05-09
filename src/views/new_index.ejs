@@ -1,0 +1,7 @@
+<%- include ('_partial_header.ejs', {title: title}) %>
+<form action="http://localhost:3002/create_index" method="POST">
+  <legend>Create Index</legend>
+    <input type="text" name="new_index" value="" placeholder="New Index" id="new-index" autofocus="autofocus" class="form-control"/>
+    <button type="submit" class="btn">Go</button>
+</form>
+<%- include ('_partial_footer.ejs') %>
